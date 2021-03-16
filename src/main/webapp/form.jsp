@@ -1,34 +1,41 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Formulier</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="stijl.css">
-        <link rel="icon" href="fotos/log.jpg">
-    </head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Formulier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stijl.css">
+    <link rel="icon" href="images/log.jpg">
+</head>
 
-    <body>
-    <div id="container">
-        <header>
-            <h1>Mijn studielogboek</h1>
-            <nav>
-                <ul class="nav">
-                    <li class="navitem"> <a href="index.jsp">Home</a> </li>
-                    <li class="navitem"> <a href="form.jsp">Voeg activiteit toe</a> </li>
-                    <li class="navitem"> <a href="overzicht.jsp">Overzicht</a> </li>
-                </ul>
-            </nav>
-        </header>
+<body>
+<div id="container">
+    <header>
+        <h1>Mijn studielogboek</h1>
+        <nav>
+            <ul class="nav">
+                <li class="navitem"><a href="Servlet?command=home">Home</a></li>
+                <li class="navitem"><a href="form.jsp">Voeg activiteit toe</a></li>
+                <li class="navitem"><a href="Servlet?command=overzicht">Overzicht</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <main>
-            <h2>Voeg nieuwe activiteit toe</h2>
-            <form>
-                <ul>
-                    <li><label>Datum: <input type="date" name="datum"></label></li>
-                    <li><label>Vak: <select name="vak">
+    <main>
+        <h2>Voeg nieuwe activiteit toe</h2>
+        <form method="POST" action="Servlet?command=add" novalidate>
+            <ul>
+                <li>
+                    <label for="datum">Datum: </label>
+                    <input id="datum" type="date" name="datum">
+                </li>
+
+                <li>
+                    <label for="vak">Vak: </label>
+                    <select id="vak" name="vak">
                         <option value="" disabled selected>Kies een vak</option>
-                        <option> Besturingssystemn 1</option>
+                        <option> Besturingssystemen 1</option>
                         <option> Bomen en grafen</option>
                         <option> Buisness Process Management</option>
                         <option> Computernetwerken 2</option>
@@ -36,23 +43,40 @@
                         <option> OO Porgrammeren</option>
                         <option> Scripttalen</option>
                         <option> Webontwikkeling 2</option>
-                    </select></label></li>
-                    <li><label>Beschrijving: <textarea name="comments" placeholder="Geef een korte beschrijving"></textarea></label></li>
-                    <li><label>Type: <select name="type">
+                    </select>
+                </li>
+
+                <li>
+                    <label for="type">Type: </label>
+                    <select id="type" name="type">
                         <option value="" disabled selected>Kies een type</option>
                         <option>Taak</option>
                         <option>Test</option>
                         <option>Examen</option>
-                    </select></label></li>
-                    <li><label>Aantal minuten: <input type="number"></label></li>
-                    <li><input type="submit" value="Indienen"></li>
-                </ul>
-            </form>
-        </main>
+                    </select>
+                </li>
 
-        <footer>
-            <p>r0795625</p>
-        </footer>
-    </div>
-    </body>
+                <li>
+                    <label for="minuten">Aantal minuten: </label>
+                    <input id="minuten" name="minuten" type="number" min="0" placeholder="X">
+                </li>
+
+                <li>
+                    <label for="beschrijving">Beschrijving: </label>
+                    <textarea id="beschrijving" name="beschrijving"
+                              placeholder="Geef een korte beschrijving"></textarea>
+                </li>
+
+                <li>
+                    <input type="submit" value="Indienen" id="submit">
+                </li>
+            </ul>
+        </form>
+    </main>
+
+    <footer>
+        <p>r0795625 - 2020/2021</p>
+    </footer>
+</div>
+</body>
 </html>

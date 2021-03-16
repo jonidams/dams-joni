@@ -58,6 +58,7 @@ h1, h2 {
 p {
     margin-left: auto;
     margin-right: auto;
+    width: 80%;
 }
 
 footer {
@@ -79,36 +80,59 @@ footer {
 }
 
 /** form */
+form {
+    text-align: center;
+    font-size: large;
+}
 
 form li {
     list-style-type: none;
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 form input {
-    margin-top: 10px;
+    display: block;
 }
 form select {
-    margin-top: 10px;
+    display: block;
+    width: 52%;
 }
 
 textarea {
-    margin-top: 10px;
-    height: 15px;
-    width: 300px;
+    display: block;
+}
+
+label {
+    align-content: center;
 }
 
 input[type=submit] {
     padding: 5px 15px;
-    background: grey;
-    border: 0 none;
+    background: #ffffff;
     cursor: pointer;
     border-radius: 5px;
+    width: 20%;
+    color: #000000;
+    border: 3px solid black;
+    font-size: medium;
 }
 
 input[type=submit]:hover {
     background-color: #000000;
     color: #ffffff;
     transition: 500ms;
+
+}
+
+input, select, textarea {
+    border: 2px solid #000000;
+    border-radius: 25px;
+    padding: 10px;
+    box-shadow: 5px 5px #696969;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 /** overzicht */
@@ -147,13 +171,17 @@ tbody {
     background-color: royalblue;
 }
 
+main li {
+    list-style-type: none;
+}
+
 /* media */
 
-@media screen and (max-width: 776px) {
+@media screen and (max-width: 800px) {
 
     .nav {
-        display: grid;
-        grid-column: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .active .navitem {
