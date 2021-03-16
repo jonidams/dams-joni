@@ -1,8 +1,11 @@
 <%@ page import="domain.model.domain.Activiteit" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% Activiteit activiteit= (Activiteit) request.getAttribute("activiteit"); %>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Studielogboek</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stijl.css">
@@ -22,18 +25,19 @@
             </ul>
         </nav>
     </header>
-
     <main>
-        <section class="inleiding">
-            <h2>Mijn studielogboek 2020-2021</h2>
-            <img src="images/log.jpg" alt="logboek">
-            <p>Op deze pagina vinden jullie wat ik voor school doe. Telkens wordt er aangegeven op welke dag ik werkte, voor welk vak, een korte beschrijving van wat ik heb gedaan, of het een taak-/test-/examen-voorbereiding was, en hoe lang ik er aan heb gezeten.
-                <br><br> Het vak waar ik het langste voor heb gewerkt is <%= ((Activiteit)request.getAttribute("meestGewerkt")).getVak() %>. </p>
-        </section>
+        <h2>Gevonden</h2>
+
+        <p>Je vroeg naar volgende gegevens: <br>
+            <%
+                ArrayList<Activiteit> activiteiten = (ArrayList<Activiteit>) request.getAttribute("activiteiten");
+                for (Activiteit a : activiteiten) { %> <br>
+                <%= a.format() %></p>
+        <%}%>
     </main>
 
     <footer>
-        <p>r0795625 - 2020/2021</p>
+        <p>r0795625</p>
     </footer>
 </div>
 </body>

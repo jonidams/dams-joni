@@ -21,13 +21,15 @@
                 <li class="navitem"> <a href="Servlet?command=home">Home</a> </li>
                 <li class="navitem"> <a href="form.jsp">Voeg activiteit toe</a> </li>
                 <li class="navitem"> <a href="Servlet?command=overzicht">Overzicht</a> </li>
+                <li class="navitem"> <a href="zoek.jsp">Zoeken</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <h2>Overzicht</h2>
-
+            <% ArrayList<Activiteit> activiteiten = (ArrayList<Activiteit>)request.getAttribute("activiteiten");
+            if (activiteiten != null) { %>
         <table>
             <thead>
                 <tr>
@@ -41,7 +43,7 @@
                 </tr>
             </thead>
             <tbody>
-            <% ArrayList<Activiteit> activiteiten = (ArrayList<Activiteit>)request.getAttribute("activiteiten");
+            <%
             for (Activiteit activiteit : activiteiten) { %>
                 <tr>
                     <td><%=activiteit.getDatum()%></td>
@@ -57,6 +59,9 @@
                 %>
             </tbody>
         </table>
+        <% } else { %>
+            <p>Er zijn geen activiteiten.</p>
+        <%}%>
     </main>
 
     <footer>

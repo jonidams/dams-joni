@@ -1,12 +1,15 @@
 package ui.controller;
+
 import domain.model.db.ActiviteitDB;
 import domain.model.domain.Activiteit;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
@@ -25,16 +28,17 @@ public class Servlet extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String command = "home";
+        /*String command = "home";
         if (request.getParameter("command") != null) {
             command = request.getParameter("command");
-        }
+        }*/
 
         String destination;
+        String command = request.getParameter("command");
+        if (command == null) {
+            command = "home";
+        }
         switch (command) {
-            case "home":
-                destination = home(request);
-                break;
             case "overzicht":
                 destination = overzicht(request);
                 break;
@@ -46,6 +50,9 @@ public class Servlet extends HttpServlet {
                 break;
             case "delete":
                 destination = delete(request);
+                break;
+            case "zoek":
+                destination = zoek(request);
                 break;
             default:
                 destination = home(request);
@@ -74,7 +81,7 @@ public class Servlet extends HttpServlet {
         String type = request.getParameter("type");
         String minuten = request.getParameter("minuten");
         String beschrijving = request.getParameter("beschrijving");
-        if (!datum.isEmpty() && !vak.isEmpty() && !type.isEmpty() && !minuten.isEmpty() && !beschrijving.isEmpty()) {
+        if (!datum.isEmpty() && vak != null && !vak.isEmpty() && type != null && !type.isEmpty() && !minuten.isEmpty() && !beschrijving.isEmpty()) {
             Activiteit activiteit = new Activiteit(datum, vak, type, Integer.parseInt(minuten), beschrijving);
             activiteitDB.addActiviteit(activiteit);
             return overzicht(request);
@@ -86,7 +93,27 @@ public class Servlet extends HttpServlet {
         String vak = request.getParameter("vak");
         activiteitDB.verwijder(vak);
         return overzicht(request);
+    }
 
+    private String zoek(HttpServletRequest request) {
+        String vak = request.getParameter("vak");
+        String type = request.getParameter("type");
+        String destination;
+
+        if (vak==null || type== null) {
+            destination="nietGevonden.jsp";
+        }
+        else {
+            ArrayList<Activiteit> activiteiten = activiteitDB.vind(vak);
+            if (activiteiten.size() == 0) {
+                destination="nietGevonden.jsp";
+            }
+            else {
+                destination="gevonden.jsp";
+                request.setAttribute("activiteiten", activiteiten);
+            }
+        }
+        return destination;
     }
 }
 

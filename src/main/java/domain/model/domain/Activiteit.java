@@ -8,21 +8,6 @@ public class Activiteit {
     private int minuten;
 
     public Activiteit(String datum, String vak, String type, int minuten, String beschrijving) {
-        if (datum.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        if (vak.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        if (type.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
-        if (minuten < 1) {
-            throw new IllegalArgumentException();
-        }
-        if (beschrijving.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
         this.datum = datum;
         this.vak = vak;
         this.type = type;
@@ -33,10 +18,6 @@ public class Activiteit {
     public Activiteit (String vak) {
         this.setVak(vak);
     }
-
-   /* public boolean isZelfde(Activiteit activiteit2) {
-        return this.datum.equals(activiteit2.getDatum()) && this.vak.equals(activiteit2.getVak()) && this.type.equals(activiteit2.getType());
-    }*/
 
     public boolean equals (Object o) {
         if (o instanceof Activiteit) {
@@ -93,5 +74,9 @@ public class Activiteit {
             throw new IllegalArgumentException("Geef een korte beschrijving.");
         }
         this.beschrijving = beschrijving;
+    }
+
+    public String format() {
+        return getDatum()+", "+getVak()+", "+getType()+", "+getMinuten()+" minuten, "+getBeschrijving();
     }
 }

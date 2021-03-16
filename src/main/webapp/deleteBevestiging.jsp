@@ -17,6 +17,7 @@
                 <li class="navitem"> <a href="Servlet?command=home">Home</a> </li>
                 <li class="navitem"> <a href="form.jsp">Voeg activiteit toe</a> </li>
                 <li class="navitem"> <a href="Servlet?command=overzicht">Overzicht</a> </li>
+                <li class="navitem"> <a href="zoek.jsp">Zoeken</a></li>
             </ul>
         </nav>
     </header>
@@ -27,7 +28,7 @@
         <form action="Servlet?command=delete&vak=<%= request.getParameter("vak") %>" method="POST">
             <input type="submit" value="Ja"/>
         </form>
-        <p><a href="Servlet?command=overview">Cancel</a> indien je <%= request.getParameter("vak") %> niet wil verwijderen</p>
+        <p><a href="Servlet?command=overzicht">Annuleer</a> indien je <%= request.getParameter("vak") %> niet wil verwijderen</p>
     </main>
 
     <footer>

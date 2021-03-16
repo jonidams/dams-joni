@@ -18,6 +18,7 @@
                 <li class="navitem"><a href="Servlet?command=home">Home</a></li>
                 <li class="navitem"><a href="form.jsp">Voeg activiteit toe</a></li>
                 <li class="navitem"><a href="Servlet?command=overzicht">Overzicht</a></li>
+                <li class="navitem"> <a href="zoek.jsp">Zoeken</a></li>
             </ul>
         </nav>
     </header>
