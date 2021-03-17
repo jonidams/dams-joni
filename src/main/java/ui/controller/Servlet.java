@@ -1,5 +1,4 @@
 package ui.controller;
-
 import domain.model.db.ActiviteitDB;
 import domain.model.domain.Activiteit;
 

@@ -1,5 +1,4 @@
 package domain.model.db;
-
 import domain.model.domain.Activiteit;
 import java.util.ArrayList;
 
