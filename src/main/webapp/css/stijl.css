@@ -1,14 +1,14 @@
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     text-align: center;
-    background-image: linear-gradient(to bottom right, #4444f3, #0d0dde);
+    background-color: #000000;
     padding: 0;
 }
 
 #container {
     max-width: 80%;
     margin: auto;
-    background-color: #ffffff;
+    background-color: #ff924a;
     border-radius: 10px;
 }
 
@@ -16,7 +16,7 @@ nav {
     text-transform: uppercase;
     font-size: medium;
     letter-spacing: 1px;
-    background-image: linear-gradient(to right, #8b8b8d, #696969, #8b8b8d);
+    background-image: linear-gradient(to right, #000000, #8c8885, #000000);
     box-shadow: 0 -10px 5px -5px rgba(0,0,0,0.75);
     opacity: 85%;
 }
@@ -37,7 +37,7 @@ nav {
 }
 
 .nav a:hover, .nav .current a {
-    color: blue;
+    color: #ffffff;
     transition: 1250ms;
 }
 
@@ -72,13 +72,16 @@ footer {
     font-size: small;
     opacity: 85%;
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 /** Index */
 
 .inleiding img {
     max-width: 50%;
-    padding: 10px;
+
+    border-radius: 10%;
+    border:1px solid black;
 }
 
 /** form */
@@ -159,6 +162,7 @@ thead {
 td {
     color: black;
     max-width: 150px;
+    background-color: #cccccc;
 }
 
 tbody {
@@ -175,6 +179,10 @@ tbody {
 
 main li {
     list-style-type: none;
+}
+
+.verplicht {
+    font-size: 12px;
 }
 
 /* media */

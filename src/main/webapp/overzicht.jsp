@@ -1,7 +1,6 @@
 <%@ page import="domain.model.domain.Activiteit" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +18,7 @@
         <nav>
             <ul class="nav">
                 <li class="navitem"> <a href="Servlet?command=home">Home</a> </li>
-                <li class="navitem"> <a href="form.jsp">Voeg activiteit toe</a> </li>
+                <li class="navitem"> <a href="form.jsp">Voeg toe</a> </li>
                 <li class="navitem"> <a href="Servlet?command=overzicht">Overzicht</a> </li>
                 <li class="navitem"> <a href="zoek.jsp">Zoeken</a></li>
             </ul>
@@ -28,8 +27,10 @@
 
     <main>
         <h2>Overzicht</h2>
-            <% ArrayList<Activiteit> activiteiten = (ArrayList<Activiteit>)request.getAttribute("activiteiten");
-            if (activiteiten != null) { %>
+            <%
+                ArrayList<Activiteit> activiteiten = (ArrayList<Activiteit>)request.getAttribute("activiteiten");
+                if (activiteiten != null) {
+            %>
         <table>
             <thead>
                 <tr>
@@ -44,7 +45,8 @@
             </thead>
             <tbody>
             <%
-            for (Activiteit activiteit : activiteiten) { %>
+                for (Activiteit activiteit : activiteiten) {
+            %>
                 <tr>
                     <td><%=activiteit.getDatum()%></td>
                     <td><%=activiteit.getVak()%></td>
@@ -59,9 +61,13 @@
                 %>
             </tbody>
         </table>
-        <% } else { %>
-            <p>Er zijn geen activiteiten.</p>
-        <%}%>
+        <%
+            } else {
+        %>
+        <p>Er zijn geen activiteiten.</p>
+        <%
+                }
+        %>
     </main>
 
     <footer>

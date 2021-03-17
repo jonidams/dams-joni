@@ -16,7 +16,7 @@
         <nav>
             <ul class="nav">
                 <li class="navitem"><a href="Servlet?command=home">Home</a></li>
-                <li class="navitem"><a href="form.jsp">Voeg activiteit toe</a></li>
+                <li class="navitem"><a href="form.jsp">Voeg toe</a></li>
                 <li class="navitem"><a href="Servlet?command=overzicht">Overzicht</a></li>
                 <li class="navitem"> <a href="zoek.jsp">Zoeken</a></li>
             </ul>
@@ -25,15 +25,16 @@
 
     <main>
         <h2>Voeg nieuwe activiteit toe</h2>
+        <p class="verplicht">(Alle velden zijn verplicht)</p>
         <form method="POST" action="Servlet?command=add" novalidate>
             <ul>
                 <li>
-                    <label for="datum">Datum: </label>
+                    <label for="datum">Datum:</label>
                     <input id="datum" type="date" name="datum">
                 </li>
 
                 <li>
-                    <label for="vak">Vak: </label>
+                    <label for="vak">Vak:</label>
                     <select id="vak" name="vak">
                         <option value="" disabled selected>Kies een vak</option>
                         <option> Besturingssystemen 1</option>
@@ -48,7 +49,7 @@
                 </li>
 
                 <li>
-                    <label for="type">Type: </label>
+                    <label for="type">Type:</label>
                     <select id="type" name="type">
                         <option value="" disabled selected>Kies een type</option>
                         <option>Taak</option>
@@ -58,12 +59,12 @@
                 </li>
 
                 <li>
-                    <label for="minuten">Aantal minuten: </label>
+                    <label for="minuten">Aantal minuten:</label>
                     <input id="minuten" name="minuten" type="number" min="0" placeholder="X">
                 </li>
 
                 <li>
-                    <label for="beschrijving">Beschrijving: </label>
+                    <label for="beschrijving">Beschrijving:</label>
                     <textarea id="beschrijving" name="beschrijving"
                               placeholder="Geef een korte beschrijving"></textarea>
                 </li>

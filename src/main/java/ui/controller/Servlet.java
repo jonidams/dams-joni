@@ -28,11 +28,6 @@ public class Servlet extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*String command = "home";
-        if (request.getParameter("command") != null) {
-            command = request.getParameter("command");
-        }*/
-
         String destination;
         String command = request.getParameter("command");
         if (command == null) {
@@ -81,11 +76,12 @@ public class Servlet extends HttpServlet {
         String type = request.getParameter("type");
         String minuten = request.getParameter("minuten");
         String beschrijving = request.getParameter("beschrijving");
-        if (!datum.isEmpty() && vak != null && !vak.isEmpty() && type != null && !type.isEmpty() && !minuten.isEmpty() && !beschrijving.isEmpty()) {
+        if (!datum.isEmpty() && vak != null && !vak.isEmpty() && type != null && !type.isEmpty() && !minuten.isEmpty() && Integer.parseInt(minuten) >= 1 && !beschrijving.isEmpty()) {
             Activiteit activiteit = new Activiteit(datum, vak, type, Integer.parseInt(minuten), beschrijving);
             activiteitDB.addActiviteit(activiteit);
             return overzicht(request);
-        } else {
+        }
+        else {
             return "form.jsp";
         }
     }
@@ -100,16 +96,26 @@ public class Servlet extends HttpServlet {
         String type = request.getParameter("type");
         String destination;
 
-        if (vak==null || type== null) {
-            destination="nietGevonden.jsp";
+        if (vak==null && type == null) {
+            destination="zoek.jsp";
         }
-        else {
-            ArrayList<Activiteit> activiteiten = activiteitDB.vind(vak);
+        else if (type == null) {
+            ArrayList<Activiteit> activiteiten = activiteitDB.vindVak(vak);
             if (activiteiten.size() == 0) {
-                destination="nietGevonden.jsp";
+                destination = "nietGevonden.jsp";
             }
             else {
-                destination="gevonden.jsp";
+                destination = "gevonden.jsp";
+                request.setAttribute("activiteiten", activiteiten);
+            }
+        }
+        else {
+            ArrayList<Activiteit> activiteiten = activiteitDB.vind(vak, type);
+            if (activiteiten.size() == 0) {
+                destination = "nietGevonden.jsp";
+            }
+            else {
+                destination = "gevonden.jsp";
                 request.setAttribute("activiteiten", activiteiten);
             }
         }

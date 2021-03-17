@@ -8,7 +8,7 @@ public class ActiviteitDB {
 
     public ActiviteitDB() {
         this.addActiviteit(new Activiteit("2021-03-10", "Webontwikkeling 2", "Taak", 30, "Assignment 1"));
-        this.addActiviteit(new Activiteit("2021-03-11", "Webontwikkeling 2", "Taak", 30, "Assignment 2"));
+        this.addActiviteit(new Activiteit("2021-03-11", "Webontwikkeling 2", "Test", 30, "test"));
         this.addActiviteit(new Activiteit("2021-03-11", "Scripttalen", "Taak", 20, "oefeningen 1"));
         this.addActiviteit(new Activiteit("2021-03-12", "Besturingssystemen 1", "Test", 10, "linux"));
     }
@@ -17,10 +17,17 @@ public class ActiviteitDB {
         activiteiten.add(activiteit);
     }
 
-    public ArrayList<Activiteit> vind(String vak) {
+    public ArrayList<Activiteit> vind(String vak, String type) {
         ArrayList<Activiteit> gevondenActiviteiten = new ArrayList<>();
-        if (vak == null || vak.isEmpty())
-            throw new IllegalArgumentException("Vak mag niet leeg zijn");
+        for (Activiteit activiteit : activiteiten) {
+            if (activiteit.getVak().equals(vak) && activiteit.getType().equals(type))
+                gevondenActiviteiten.add(activiteit);
+        }
+        return gevondenActiviteiten;
+    }
+
+    public ArrayList<Activiteit> vindVak(String vak) {
+        ArrayList<Activiteit> gevondenActiviteiten = new ArrayList<>();
         for (Activiteit activiteit : activiteiten) {
             if (activiteit.getVak().equals(vak))
                 gevondenActiviteiten.add(activiteit);
@@ -28,18 +35,15 @@ public class ActiviteitDB {
         return gevondenActiviteiten;
     }
 
-    public Activiteit vind2(String vak) {
-        if (vak == null ||vak.isEmpty()) {
-            throw new IllegalArgumentException("email mag niet leeg zijn.");
-        }
+    public Activiteit vindVerwijder(String vak) {
         for (Activiteit activiteit : activiteiten) {
-            if (activiteit.getVak().equals(vak))
-                return activiteit;
+        if (activiteit.getVak().equals(vak))
+            return activiteit;
         }
         return null;
     }
     public void verwijder(String vak) {
-        activiteiten.remove(this.vind2(vak));
+        activiteiten.remove(this.vindVerwijder(vak));
     }
 
     public ArrayList<Activiteit> getAll() {

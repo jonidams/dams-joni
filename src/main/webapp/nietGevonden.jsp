@@ -16,18 +16,19 @@
         <nav>
             <ul class="nav">
                 <li class="navitem"> <a href="Servlet?command=home">Home</a> </li>
-                <li class="navitem"> <a href="form.jsp">Voeg activiteit toe</a> </li>
+                <li class="navitem"> <a href="form.jsp">Voeg toe</a> </li>
                 <li class="navitem"> <a href="Servlet?command=overzicht">Overzicht</a> </li>
                 <li class="navitem"> <a href="zoek.jsp">Zoeken</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <p>Niks gevonden.</p>
+        <h2>Helaas...</h2>
+        <p>Geen activiteiten van dit vak gevonden.</p>
     </main>
 
     <footer>
-        <p>r0795625</p>
+        <p>r0795625 - 2020/2021</p>
     </footer>
 </div>
 </body>
